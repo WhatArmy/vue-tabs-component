@@ -360,9 +360,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return this.id ? this.id : this.name.toLowerCase().replace(/ /g, '-');
             },
             hash: function hash() {
-                if (this.isDisabled) {
-                    return '#';
-                }
+                // if (this.isDisabled) {
+                //     return '#';
+                // }
 
                 return '#' + this.computedId;
             }
