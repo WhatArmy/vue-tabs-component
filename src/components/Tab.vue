@@ -34,9 +34,9 @@
             },
 
             hash() {
-                if (this.isDisabled) {
-                    return '#';
-                }
+                // if (this.isDisabled) {
+                //     return '#';
+                // }
 
                 return '#' + this.computedId;
             },
