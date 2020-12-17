@@ -103,7 +103,6 @@
                 }
 
                 if (selectedTab.isDisabled) {
-                    console.log(selectedTab);
                     this.$emit('disabledClick', { tab: selectedTab });
                     event.preventDefault();
                     return;
