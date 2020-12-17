@@ -92,10 +92,6 @@ export default {
 
         selectTab(selectedTabHash, event) {
             // See if we should store the hash in the url fragment.
-            if (!this.options.useUrlFragment) {
-                event.preventDefault();
-            }
-
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
             }

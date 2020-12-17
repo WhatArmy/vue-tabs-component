@@ -518,10 +518,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             },
             selectTab: function selectTab(selectedTabHash, event) {
                 // See if we should store the hash in the url fragment.
-                if (!this.options.useUrlFragment) {
-                    event.preventDefault();
-                }
-
                 if (event && !this.options.useUrlFragment) {
                     event.preventDefault();
                 }
