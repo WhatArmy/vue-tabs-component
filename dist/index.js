@@ -481,10 +481,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             this.tabs = this.$children;
         },
         mounted: function mounted() {
-            var t = this;
-            window.addEventListener('hashchange', function (event) {
-                event.preventDefault();
-                t.selectTab(window.location.hash);
+            var _this = this;
+
+            window.addEventListener('hashchange', function () {
+                return _this.selectTab(window.location.hash);
             });
 
             if (this.findTab(window.location.hash)) {
@@ -524,6 +524,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 var selectedTab = this.findTab(selectedTabHash);
 
                 if (!selectedTab) {
+                    event.preventDefault();
                     return;
                 }
 
@@ -581,10 +582,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return this.tabs.indexOf(tab);
             },
             getTabHash: function getTabHash(index) {
-                var _this = this;
+                var _this2 = this;
 
                 var tab = this.tabs.find(function (tab) {
-                    return _this.tabs.indexOf(tab) === index;
+                    return _this2.tabs.indexOf(tab) === index;
                 });
 
                 if (!tab) {

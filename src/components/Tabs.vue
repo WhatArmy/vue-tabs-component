@@ -61,11 +61,7 @@ export default {
     },
 
     mounted() {
-        const t = this;
-        window.addEventListener('hashchange', function (event) {
-            event.preventDefault();
-            t.selectTab(window.location.hash);
-        });
+        window.addEventListener('hashchange', () => this.selectTab(window.location.hash));
 
         if (this.findTab(window.location.hash)) {
             this.selectTab(window.location.hash);
@@ -102,17 +98,18 @@ export default {
             const selectedTab = this.findTab(selectedTabHash);
 
             if (!selectedTab) {
+                event.preventDefault();
                 return;
             }
 
             if (selectedTab.isDisabled) {
-                this.$emit('disabledClick', {tab: selectedTab});
+                this.$emit('disabledClick', { tab: selectedTab });
                 event.preventDefault();
                 return;
             }
 
             if (this.lastActiveTabHash === selectedTab.hash) {
-                this.$emit('clicked', {tab: selectedTab});
+                this.$emit('clicked', { tab: selectedTab });
                 return;
             }
 
@@ -120,7 +117,7 @@ export default {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
 
-            this.$emit('changed', {tab: selectedTab});
+            this.$emit('changed', { tab: selectedTab });
 
             this.activeTabHash = selectedTab.hash;
             this.activeTabIndex = this.getTabIndex(selectedTabHash);
