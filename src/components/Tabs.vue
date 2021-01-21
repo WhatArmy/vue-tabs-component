@@ -95,7 +95,6 @@ export default {
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
             }
-            event.preventDefault();
             const selectedTab = this.findTab(selectedTabHash);
 
             if (!selectedTab) {
@@ -110,6 +109,7 @@ export default {
 
             if (this.lastActiveTabHash === selectedTab.hash) {
                 this.$emit('clicked', { tab: selectedTab });
+                event.preventDefault();
                 return;
             }
 
