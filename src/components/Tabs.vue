@@ -12,7 +12,7 @@
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab.hash, $event,true)"
+                   @click="selectTab(tab.hash, $event)"
                    :href="tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
@@ -90,7 +90,7 @@ export default {
             return this.tabs.find(tab => tab.hash === hash);
         },
 
-        selectTab(selectedTabHash, event, click) {
+        selectTab(selectedTabHash, event) {
             // See if we should store the hash in the url fragment.
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
@@ -123,9 +123,6 @@ export default {
             this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
             expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
-            if (event && click === true) {
-                event.preventDefault();
-            }
         },
 
         setTabVisible(hash, visible) {
