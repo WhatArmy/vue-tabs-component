@@ -95,9 +95,6 @@ export default {
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
             }
-            if (event) {
-                event.preventDefault();
-            }
 
             const selectedTab = this.findTab(selectedTabHash);
 
@@ -120,7 +117,9 @@ export default {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
             this.$emit('changed', { tab: selectedTab });
-
+            if (event) {
+                event.preventDefault();
+            }
             this.activeTabHash = selectedTab.hash;
             this.activeTabIndex = this.getTabIndex(selectedTabHash);
 

@@ -521,9 +521,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 if (event && !this.options.useUrlFragment) {
                     event.preventDefault();
                 }
-                if (event) {
-                    event.preventDefault();
-                }
 
                 var selectedTab = this.findTab(selectedTabHash);
 
@@ -546,7 +543,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     tab.isActive = tab.hash === selectedTab.hash;
                 });
                 this.$emit('changed', { tab: selectedTab });
-
+                if (event) {
+                    event.preventDefault();
+                }
                 this.activeTabHash = selectedTab.hash;
                 this.activeTabIndex = this.getTabIndex(selectedTabHash);
 
