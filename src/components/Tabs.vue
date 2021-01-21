@@ -12,7 +12,7 @@
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab.hash, $event)"
+                   @click.prevent="selectTab(tab.hash, $event)"
                    :href="tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
@@ -117,9 +117,7 @@ export default {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
             this.$emit('changed', { tab: selectedTab });
-            if (event) {
-                event.preventDefault();
-            }
+
             this.activeTabHash = selectedTab.hash;
             this.activeTabIndex = this.getTabIndex(selectedTabHash);
 

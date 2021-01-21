@@ -543,9 +543,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     tab.isActive = tab.hash === selectedTab.hash;
                 });
                 this.$emit('changed', { tab: selectedTab });
-                if (event) {
-                    event.preventDefault();
-                }
+
                 this.activeTabHash = selectedTab.hash;
                 this.activeTabIndex = this.getTabIndex(selectedTabHash);
 
@@ -988,6 +986,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
+          $event.preventDefault();
           return _vm.selectTab(tab.hash, $event)
         }
       }
