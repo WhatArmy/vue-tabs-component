@@ -518,7 +518,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             },
             selectTab: function selectTab(selectedTabHash, event) {
                 // See if we should store the hash in the url fragment.
-                event.preventDefault();
                 if (event && !this.options.useUrlFragment) {
                     event.preventDefault();
                 }
@@ -542,7 +541,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.tabs.forEach(function (tab) {
                     tab.isActive = tab.hash === selectedTab.hash;
                 });
-
                 this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHash = selectedTab.hash;
@@ -551,6 +549,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 _expiringStorage2.default.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+                event.preventDefault();
             },
             setTabVisible: function setTabVisible(hash, visible) {
                 var tab = this.findTab(hash);

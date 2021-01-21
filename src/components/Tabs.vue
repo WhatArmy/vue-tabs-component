@@ -92,7 +92,6 @@ export default {
 
         selectTab(selectedTabHash, event) {
             // See if we should store the hash in the url fragment.
-            event.preventDefault();
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
             }
@@ -116,7 +115,6 @@ export default {
             this.tabs.forEach(tab => {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
-
             this.$emit('changed', { tab: selectedTab });
 
             this.activeTabHash = selectedTab.hash;
@@ -125,6 +123,7 @@ export default {
             this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
             expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+            event.preventDefault();
         },
 
         setTabVisible(hash, visible) {
