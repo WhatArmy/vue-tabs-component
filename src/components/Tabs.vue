@@ -111,7 +111,9 @@ export default {
                 this.$emit('clicked', { tab: selectedTab });
                 return;
             }
-
+            if (event) {
+                event.preventDefault();
+            }
             this.tabs.forEach(tab => {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
@@ -123,9 +125,6 @@ export default {
             this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
             expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
-            if (event) {
-                event.preventDefault();
-            }
 
         },
 

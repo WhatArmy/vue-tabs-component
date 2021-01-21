@@ -537,7 +537,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     this.$emit('clicked', { tab: selectedTab });
                     return;
                 }
-
+                if (event) {
+                    event.preventDefault();
+                }
                 this.tabs.forEach(function (tab) {
                     tab.isActive = tab.hash === selectedTab.hash;
                 });
@@ -549,9 +551,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 _expiringStorage2.default.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
-                if (event) {
-                    event.preventDefault();
-                }
             },
             setTabVisible: function setTabVisible(hash, visible) {
                 var tab = this.findTab(hash);
