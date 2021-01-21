@@ -516,12 +516,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     return tab.hash === hash;
                 });
             },
-            selectTab: function selectTab(selectedTabHash, event) {
+            selectTab: function selectTab(selectedTabHash, event, click) {
                 // See if we should store the hash in the url fragment.
                 if (event && !this.options.useUrlFragment) {
                     event.preventDefault();
                 }
-
                 var selectedTab = this.findTab(selectedTabHash);
 
                 if (!selectedTab) {
@@ -550,6 +549,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 _expiringStorage2.default.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+                if (event && click === true) {
+                    event.preventDefault();
+                }
             },
             setTabVisible: function setTabVisible(hash, visible) {
                 var tab = this.findTab(hash);
@@ -986,8 +988,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          $event.preventDefault();
-          return _vm.selectTab(tab.hash, $event)
+          return _vm.selectTab(tab.hash, $event, true)
         }
       }
     })])
