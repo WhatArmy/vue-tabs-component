@@ -499,8 +499,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return;
             }
 
-            if (this.options.defaultTabHash !== null && this.findTab("#" + this.options.defaultTabHash)) {
-                this.selectTab("#" + this.options.defaultTabHash);
+            if (this.options.defaultTabHash !== null && this.findTab('#' + this.options.defaultTabHash)) {
+                this.selectTab('#' + this.options.defaultTabHash);
                 return;
             }
 
@@ -521,7 +521,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 if (event && !this.options.useUrlFragment) {
                     event.preventDefault();
                 }
-
+                event.preventDefault();
                 var selectedTab = this.findTab(selectedTabHash);
 
                 if (!selectedTab) {

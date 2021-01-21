@@ -75,8 +75,8 @@ export default {
             return;
         }
 
-        if (this.options.defaultTabHash !== null && this.findTab("#" + this.options.defaultTabHash)) {
-            this.selectTab("#" + this.options.defaultTabHash);
+        if (this.options.defaultTabHash !== null && this.findTab('#' + this.options.defaultTabHash)) {
+            this.selectTab('#' + this.options.defaultTabHash);
             return;
         }
 
@@ -95,7 +95,7 @@ export default {
             if (event && !this.options.useUrlFragment) {
                 event.preventDefault();
             }
-
+            event.preventDefault();
             const selectedTab = this.findTab(selectedTabHash);
 
             if (!selectedTab) {
@@ -103,13 +103,13 @@ export default {
             }
 
             if (selectedTab.isDisabled) {
-                this.$emit('disabledClick', {tab: selectedTab});
+                this.$emit('disabledClick', { tab: selectedTab });
                 event.preventDefault();
                 return;
             }
 
             if (this.lastActiveTabHash === selectedTab.hash) {
-                this.$emit('clicked', {tab: selectedTab});
+                this.$emit('clicked', { tab: selectedTab });
                 return;
             }
 
@@ -117,7 +117,7 @@ export default {
                 tab.isActive = (tab.hash === selectedTab.hash);
             });
 
-            this.$emit('changed', {tab: selectedTab});
+            this.$emit('changed', { tab: selectedTab });
 
             this.activeTabHash = selectedTab.hash;
             this.activeTabIndex = this.getTabIndex(selectedTabHash);
