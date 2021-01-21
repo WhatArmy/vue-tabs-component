@@ -549,7 +549,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 _expiringStorage2.default.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
-                event.preventDefault();
+                if (event) {
+                    event.preventDefault();
+                }
             },
             setTabVisible: function setTabVisible(hash, visible) {
                 var tab = this.findTab(hash);

@@ -123,7 +123,10 @@ export default {
             this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
             expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
-            event.preventDefault();
+            if (event) {
+                event.preventDefault();
+            }
+
         },
 
         setTabVisible(hash, visible) {
